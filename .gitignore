@@ -1,0 +1,49 @@
+# =============== #
+# User generated  #
+# =============== #
+*.orig
+*.orig.meta
+UserSettings/*
+ProjectSettings/EditorSettings.asset
+
+# =============== #
+# Unity generated #
+# =============== #
+[Bb]uild
+[Bb]uilds/
+[Ll]ibrary/
+[Oo]bj/
+[Tt]emp/*
+*.apk
+*.aab
+*.stackdump
+*.unitypackage
+Assets/AssetStoreTools*
+InAppReview.meta
+sysinfo.txt
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+.consulo/
+.vs/
+.vscode/
+*.booproj
+*.csproj
+*.vsconfig
+*.pidb
+*.pidb.meta
+*.sln*
+*.suo
+*.svd
+*.tmp
+*.unityproj
+*.user
+*.userprefs
+
+# ===================================== #
+# Rider Generated                       #
+# ===================================== #
+.idea/
+
