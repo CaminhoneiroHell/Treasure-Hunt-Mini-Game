@@ -137,16 +137,18 @@ Issue: UI not updating
 
 📊 Current Architecture Assessment:
 
-MVC Implementation Status:
+# MVC Implementation Status
 
-Component	| Current Role	MVC Classification	          | Issues
-**ChestModel**	Data structure for chest	Model         |✅	Good
-**PlayerData**	Player collectables data	Model         |✅	Good
-**ChestView**	Visual chest representation	View          |✅	Good
-**CollectableView**	Collectable UI element	View        |✅	Good
-**HUDDisplayView**	Main UI controller	View/Controller |⚠️	Violates SRP
-**GameStateMachine**	Game flow manager	Controller      |⚠️	Too many responsibilities
-**PlayingState**	Gameplay logic	Controller            | ⚠️	Business logic mixed with UI
+| Component | Current Role | MVC Classification | Issues |
+|-----------|--------------|-------------------|--------|
+| **ChestModel** | Data structure for chest | Model | ✅ Good |
+| **PlayerData** | Player collectables data | Model | ✅ Good |
+| **ChestView** | Visual chest representation | View | ✅ Good |
+| **CollectableView** | Collectable UI element | View | ✅ Good |
+| **HUDDisplayView** | Main UI controller | View/Controller | ⚠️ Violates SRP |
+| **GameStateMachine** | Game flow manager | Controller | ⚠️ Too many responsibilities |
+| **PlayingState** | Gameplay logic | Controller | ⚠️ Business logic mixed with UI |
+
 
 SOLID Principles Violations
 🔴 1. Single Responsibility Principle (SRP) - Major Issues
