@@ -16,6 +16,7 @@ namespace TreasureHuntMiniGame.States
         UniTask Enter();
         UniTask Execute();
         UniTask Exit();
+        UniTask OnChestOpened(bool wasWinning);
     }
 
     public abstract class BaseGameState : IGameState
@@ -31,5 +32,6 @@ namespace TreasureHuntMiniGame.States
         public virtual UniTask Enter() => UniTask.CompletedTask;
         public virtual UniTask Execute() => UniTask.CompletedTask;
         public virtual UniTask Exit() => UniTask.CompletedTask;
+        public virtual UniTask OnChestOpened(bool wasWinning) => UniTask.CompletedTask;
     }
 }

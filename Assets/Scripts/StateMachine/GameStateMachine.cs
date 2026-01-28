@@ -1,8 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using TreasureHuntMiniGame.Core;
+using TreasureHuntMiniGame.Data;
+using TreasureHuntMiniGame.View;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace TreasureHuntMiniGame.States
@@ -72,10 +73,7 @@ namespace TreasureHuntMiniGame.States
     
         public void OnChestOpened(bool wasWinning)
         {
-            if (_currentState?.State == GameState.Playing)
-            {
-                _ = _playingState.OnChestOpened(wasWinning);
-            }
+            _ = _currentState?.OnChestOpened(wasWinning);
         }
     
         public GameState GetCurrentState() => _currentState?.State ?? GameState.Lobby;

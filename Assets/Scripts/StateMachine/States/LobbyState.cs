@@ -1,4 +1,7 @@
 using Cysharp.Threading.Tasks;
+using TreasureHuntMiniGame.Data;
+using TreasureHuntMiniGame.Enums;
+using TreasureHuntMiniGame.View;
 using UnityEngine;
 using UnityEngine.UI;
 
