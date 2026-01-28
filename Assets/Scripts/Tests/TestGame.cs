@@ -65,7 +65,7 @@ public class TestGame : MonoBehaviour
     [Command]
     private void CreateChestView(int num)
     {
-        for(int i = 0; i < num; i++)
+        for(int i = 0; i < num; i++) 
             Instantiate(chestEntryView, contentGame);
     }
 }

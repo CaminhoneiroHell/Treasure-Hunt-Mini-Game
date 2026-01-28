@@ -9,20 +9,22 @@ namespace TreasureHuntMiniGame.States
     {
         private Button _startButton;
         private ChestFactory _chestFactory;
+        private HUDDisplayView _hudDisplayView;
     
         public override GameState State => GameState.GameOver;
     
-        public GameOverState(GameStateMachine stateMachine, Button startButton, ChestFactory chestFactory) : base(stateMachine)
+        public GameOverState(GameStateMachine stateMachine, Button startButton, ChestFactory chestFactory, HUDDisplayView hudDisplay) : base(stateMachine)
         {
             _startButton = startButton;
             _chestFactory = chestFactory;
+            _hudDisplayView = hudDisplay;
         }
     
         public override async UniTask Enter()
         {
             Debug.Log("Entering Game Over State");
         
-            Debug.Log("GAME OVER! Out of attempts!");
+            _hudDisplayView.UpdateContextHUD(GameMessageType.GameOver);
         
             _startButton.gameObject.SetActive(true);
         
@@ -39,6 +41,7 @@ namespace TreasureHuntMiniGame.States
         {
             _chestFactory.ClearAllChests();
             _startButton.gameObject.SetActive(false);
+            _hudDisplayView.UpdateContextHUD(GameMessageType.Clear);
             return UniTask.CompletedTask;
         }
     }

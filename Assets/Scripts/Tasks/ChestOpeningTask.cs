@@ -25,7 +25,6 @@ public class ChestOpeningTask : MonoBehaviour
 {
     [SerializeField] private GameConfig _gameConfig;
     
-    // private CancellationTokenSource _currentOpeningCTS;
     private CancellationTokenSource _globalCancellationTokenSource;
     private ChestModel _currentlyOpeningChest;
     private GameStateMachine _stateMachine;
@@ -62,15 +61,12 @@ public class ChestOpeningTask : MonoBehaviour
         
         CancelCurrentOpening();
         
-        // Create linked cancellation token
         using var linkedCTS = CancellationTokenSource.CreateLinkedTokenSource(
             externalToken,
             _globalCancellationTokenSource.Token
         );
         
         var token = linkedCTS.Token;
-        // _currentOpeningCTS = CancellationTokenSource.CreateLinkedTokenSource(externalToken);
-        // _currentlyOpeningChest = chest;
         
         try
         {
@@ -79,11 +75,9 @@ public class ChestOpeningTask : MonoBehaviour
             
             await UniTask.Delay(
                 TimeSpan.FromSeconds(duration), 
-                // cancellationToken: _currentOpeningCTS.Token
                 cancellationToken: token
             );
             
-            // Check if cancelled during delay
             if (token.IsCancellationRequested)
             {
                 chest.ChangeState(ChestState.Closed);
@@ -94,24 +88,15 @@ public class ChestOpeningTask : MonoBehaviour
                 OpenChestResult.Success : 
                 OpenChestResult.Failure;
             
-            // chest.SetState(chest.IsWinning ? ChestState.Winning : ChestState.Opened);
             chest.ChangeState(chest.IsWinning ? ChestState.Winning : ChestState.Opened);
             Debug.Log($"Finished opening chest: {chest.Id}, Result: {result}");
             
-            // Notify state machine
             _stateMachine.OnChestOpened(chest.IsWinning);
             
             return result;
         }
         catch (OperationCanceledException)
         {
-            // if (_currentlyOpeningChest == chest)
-            // {
-            //     chest.SetState(ChestState.Closed);
-            //     Debug.Log($"Cancelled opening chest: {chest.Id}");
-            // }
-            //
-            // return OpenChestResult.Cancelled;
             
             chest.ChangeState(ChestState.Closed);
             Debug.Log($"Cancelled opening chest: {chest.Id}");

@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff7c117fe67eed45b11d0cc290883b1, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  _chestsPerRound: 6
+  _chestsPerRound: 3
   _chestOpeningDuration: 1
   maxAttempts: 3
+  victoryMessage: You Found the Treasure! You Win!!
+  gameOverMessage: GameOver! Out of Attempts
+  collectableEntriesList:
+  - collectableEntryView: {fileID: 8307303226341223069, guid: 7be8f08d51300e146a2e1195b7341f1f, type: 3}
+    collectableEntryName: Coins
+    count: 0
+  - collectableEntryView: {fileID: 8307303226341223069, guid: 7be8f08d51300e146a2e1195b7341f1f, type: 3}
+    collectableEntryName: Gems
+    count: 0

@@ -7,15 +7,17 @@ namespace TreasureHuntMiniGame.States
     {
         [Header("Configuration")]
         [SerializeField] private GameConfig _gameConfig;
+        [SerializeField] private PlayerCollectableData playerCollectableCollectableData;
+
     
         [Header("UI References")]
         [SerializeField] private Button _startButton;
         [SerializeField] private Transform _chestContainer;
         [SerializeField] private GameObject _chestPrefab;
         [SerializeField] private ChestOpeningTask _chestOpenTask;
+        [SerializeField] private HUDDisplayView _hudDisplayView;
     
         private GameStateMachine _stateMachine;
-    
         private void Start()
         {
             if (_gameConfig == null)
@@ -38,8 +40,10 @@ namespace TreasureHuntMiniGame.States
             _stateMachine = gameObject.AddComponent<GameStateMachine>();
         
             GameStateMachine stateMachineComponent = _stateMachine;
+            stateMachineComponent.SetPlayerCollectablesData(playerCollectableCollectableData);
             stateMachineComponent.SetConfig(_gameConfig);
             stateMachineComponent.SetStartButton(_startButton);
+            stateMachineComponent.SetHUDDisplayMessages(_hudDisplayView);
             stateMachineComponent.SetChestFactory(new ChestFactory(_chestPrefab, _chestContainer,_chestOpenTask));
             _chestOpenTask.SetGameStateMachine(stateMachineComponent);
         }
