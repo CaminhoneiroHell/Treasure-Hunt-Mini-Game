@@ -13,13 +13,15 @@ namespace TreasureHuntMiniGame.Core
     
 public class ChestOpeningTask : MonoBehaviour
 {
-    [SerializeField] private GameConfig _gameConfig;
+    private GameConfig _gameConfig;
     
     private CancellationTokenSource _activeOperationCTS;
     private ChestModel _currentlyOpeningChest;
     private GameStateMachine _stateMachine;
     
     public void SetGameStateMachine(GameStateMachine config) => _stateMachine = config;
+    
+    public void SetConfig(GameConfig c) => _gameConfig = c;
     
     private void Awake()
     {

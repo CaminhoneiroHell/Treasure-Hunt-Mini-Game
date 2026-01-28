@@ -36,6 +36,8 @@ namespace TreasureHuntMiniGame.Core
             Debug.Log($"Max attempts: {_gameConfig.MaxAttempts}");
             Debug.Log("=====================");
         
+            _hudDisplayView.SetConfig(_gameConfig);
+            _chestOpenTask.SetConfig(_gameConfig);
             InitializeStateMachine();
         }
     

@@ -11,10 +11,10 @@ namespace TreasureHuntMiniGame.View
         [Header("User Data Reference")] 
         
         [Header("HUD References")] 
-        [SerializeField] private GameConfig config;
         [SerializeField] private TMP_Text contextualMessages;
-        
         [SerializeField] private TMP_Text attemptsEntry;
+        private GameConfig config;
+        
         
         [Header("Collectables References")] 
         [SerializeField] private Transform collectablesContentHUD;
@@ -22,8 +22,9 @@ namespace TreasureHuntMiniGame.View
 
         
         private Dictionary<string, CollectableView> _collectableViewCache = new Dictionary<string, CollectableView>();
-        // public List<CollectableEntries> CollectableEntriesList => collectableEntriesList;
 
+        public void SetConfig(GameConfig c) => config = c;
+        
         public void UpdateContextHUD(GameMessageType messageType)
         {
             contextualMessages.text = messageType switch
